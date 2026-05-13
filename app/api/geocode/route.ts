@@ -18,7 +18,7 @@ export async function POST(request: Request) {
     sql: `SELECT lat, lng FROM ${DB_TABLES.geocodingCache} WHERE address = ?`,
     args: [address],
   });
-  const cached = cachedResult.rows[0] as { lat: number; lng: number } | undefined;
+  const cached = cachedResult.rows[0] as unknown as { lat: number; lng: number } | undefined;
 
   if (cached) {
     return NextResponse.json({
