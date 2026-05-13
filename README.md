@@ -7,8 +7,8 @@ Projekt jsem s pomocí Gemini PRO + Cursor splnil do této podoby za 3 hodiny cc
 
 ## Živé demo
 
-- Demo URL: `DOPLŇ_PO_NASAZENI`
-- GitHub repo: `DOPLŇ_URL_REPO`
+- Demo URL: `https://firmacheck-gules.vercel.app`
+- GitHub repo: `https://github.com/Jirotkins/firmacheck`
 
 ## Funkce
 
@@ -28,13 +28,15 @@ Projekt jsem s pomocí Gemini PRO + Cursor splnil do této podoby za 3 hodiny cc
 - Tailwind CSS
 - Turso (libSQL / SQLite)
 
+Vzhledem k nasazení na Vercel nebylo možné použít lokální SQLite, proto jsem zvolil cloudové Turso pro zachování jednotné architektury. Aktuálně databáze sloouží jako jeden sdílený globální stav pro všechny uživatele.
+
 ## Použité API služby
 
 - ARES API: `https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty/{ico}`
 - Geocoding: OpenStreetMap Nominatim API
 - Mapa: OpenStreetMap embed + odkaz do mapy
 
-Zvolil OpenStreetMap stack kvůli rychlé integraci bez API klíče.
+Zvolil jsem OpenStreetMap stack kvůli rychlé integraci bez API klíče.
 
 ## Spuštění lokálně
 
@@ -98,7 +100,7 @@ Použil jsem AI vizuál v hero sekci aplikace.
   `Minimalist 3D isometric illustration of a modern glass office building with a glowing green checkmark hovering above it, clean white background, soft lighting, tech startup style.`
 - umístění: horní část stránky (`app/page.tsx`), aby bylo hned vizuálně jasné, že aplikace řeší ověřování firem.
 
-## Ukázky promptů
+## Ukázky promptů pro AI asistenta v Cursoru a Gemini
 
 1. `Jsi v roli profesionálního programátora, zde je celkové zadání tvé práce (odkaz). Vytvoř kompletní adresářovou strukturu projektu s tímto tech stackem: ...`
 2. `Uprav strukturu na smysluplnou kostru pro ARES + geocoding + SQLite cache + uložené firmy + export`
