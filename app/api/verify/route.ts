@@ -25,7 +25,7 @@ export async function POST(request: Request) {
     sql: `SELECT payload FROM ${DB_TABLES.companiesCache} WHERE ico = ?`,
     args: [ico],
   });
-  const cachedCompany = cachedCompanyResult.rows[0] as { payload: string } | undefined;
+  const cachedCompany = cachedCompanyResult.rows[0] as unknown as { payload: string } | undefined;
 
   let company = cachedCompany ? (JSON.parse(cachedCompany.payload) as ReturnType<typeof JSON.parse>) : null;
   let companySource: "api" | "cache" = cachedCompany ? "cache" : "api";
@@ -49,7 +49,7 @@ export async function POST(request: Request) {
     sql: `SELECT lat, lng FROM ${DB_TABLES.geocodingCache} WHERE address = ?`,
     args: [address],
   });
-  const cachedGeo = cachedGeoResult.rows[0] as { lat: number; lng: number } | undefined;
+  const cachedGeo = cachedGeoResult.rows[0] as unknown as { lat: number; lng: number } | undefined;
   let geocodingSource: "api" | "cache" = cachedGeo ? "cache" : "api";
 
   if (cachedGeo) {

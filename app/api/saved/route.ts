@@ -8,7 +8,7 @@ export const runtime = "nodejs";
 export async function GET() {
   const db = await getDb();
   const result = await db.execute(`SELECT payload FROM ${DB_TABLES.savedCompanies} ORDER BY saved_at DESC`);
-  const rows = result.rows as { payload: string }[];
+  const rows = result.rows as unknown as { payload: string }[];
   const companies = rows.map((row) => JSON.parse(row.payload) as CompanyRecord);
   return NextResponse.json({ companies });
 }
